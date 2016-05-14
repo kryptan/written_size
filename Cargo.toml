@@ -2,5 +2,8 @@
 name = "written_size"
 version = "0.1.0"
 repository = "https://github.com/kryptan/written_size"
+description = "Implementation of std::io::Write which calculates how much data is written into it."
+documentation = "https://kryptan.github.io/written_size/target/doc/written_size/index.html"
+readme = "README.md"
 keywords = ["write", "written", "size", "length", "size"]
 license = "WTFPL"
