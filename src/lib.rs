@@ -1,14 +1,42 @@
+//! This crate provides a way to calculate how much data is being written into `std::io::Write`.
+//! This is mostly useful if you want to know how much space is necessary to serialize something
+//! without actually allocating that space or writing data anywhere.
+//!
+//! Example usage:
+//!
+//! ```
+//! use std::io::Write;
+//! use written_size::WrittenSize;
+//!
+//! let mut ws = WrittenSize::new();
+//! ws.write(&[1, 2, 3]).unwrap();
+//! ws.write(&[1, 2, 3]).unwrap();
+//!
+//! assert!(ws.size() == 6);
+//! ```
+//!
+//! If you want to write data to some other `Write` instance and at the same time calculating number of bytes written you can use
+//! this crate together with the [`broadcast`](https://crates.io/crates/broadcast) crate.
+//!
+//! If you want to calculate number of bytes read from some `Read` instance you can use this crate  together with the
+//! [`tee`](https://crates.io/crates/tee) crate.
+//!
+
 use std::io;
 
+/// Simple wrapper around `u64` which implements `std::io::Write`. It calculates how much data was written
+/// discarding the data itself.
 #[derive(Clone, Copy, Eq, PartialEq, Hash, Ord, PartialOrd, Default, Debug)]
-pub struct WrittenSize(u64);
+pub struct WrittenSize(pub u64);
 
 impl WrittenSize {
+    /// Create new instance with counter initialized to zero.
     #[inline]
     pub fn new() -> WrittenSize {
         WrittenSize(0)
     }
 
+    /// Get computed size.
     #[inline]
     pub fn size(self) -> u64 {
         self.0
