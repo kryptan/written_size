@@ -1,5 +1,6 @@
 [package]
 name = "written_size"
 version = "0.1.0"
-
-[dependencies]
+repository = "https://github.com/kryptan/written_size"
+keywords = ["write", "written", "size", "length", "size"]
+license = "WTFPL"
