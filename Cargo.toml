@@ -7,3 +7,4 @@ documentation = "https://kryptan.github.io/written_size/target/doc/written_size/
 readme = "README.md"
 keywords = ["write", "written", "size", "length", "size"]
 license = "WTFPL"
+authors = ["kryptan"]
