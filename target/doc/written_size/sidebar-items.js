@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["WrittenSize","Simple wrapper around `u64` which implements `std::io::Write`. It calculates how much data was written discarding the data itself."]]});
